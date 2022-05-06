@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body bgcolor="Lightskyblue">
+<center style="font-weight:bold;margin-top:20px;">REGISTER</center>
+<br>
+<br>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<label style="margin-left:100px;"> Firstname</label>
+<input type="text" name="name" size="40" style="margin-left:100px;"/> <br>
+<label style="margin-left:100px;"> Username</label>
+<input type="text" name="email" size="40" style="margin-left:100px;"/> <br>
+
+
+
+
+
+<label style="margin-left:100px;">Password</label>
+<input type="text" name="password" size="40" style="margin-left:100px;"/> <br>
+<label style="margin-left:100px;"> confirm password</label>
+<input type="text" name="password2" size="40" style="margin-left:100px;"/> <br>
+
+<input type="submit" value="submit" style="margin-left:120px;">
+
+
+</form>
+</body>
+{% endblock %}

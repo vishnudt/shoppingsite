@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Sislaf</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css'%}" rel="stylesheet" type="text/css" media="all">
+
+
+
+<!--  ###################################################################################################-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+
+
+
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url({% static 'hm/images/demo/backgrounds/bk.jpg'%});">
+<!--##############################################################################################################-->
+<!--<div class="wrapper row0">-->
+<!--  <div id="topbar" class="hoc clear">-->
+<!--    <div class="fl_right">-->
+
+<!--         <ul class="nospace">-->
+
+<!--           <li id="searchform">-->
+<!--             <div>-->
+<!--               <form action="a" method="post">-->
+<!--                 <fieldset>-->
+<!--                   <legend>Quick search</legend>-->
+<!--                   <input type="text" placeholder="enter the search term&hellip;">-->
+<!--                   <button type="submit"><i class="fas fa-search"></i> </button>-->
+<!--                 </fieldset>-->
+<!--               </form>-->
+<!--             </div>-->
+<!--           </li>-->
+<!--         </ul>-->
+<!--&lt;!&ndash;#################################################################################################################################################&ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+<!--#######################################################################################################################################-->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <h1 style="color:red;"><a href="/">shopping site</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+
+        <!-- ################################################################################################ -->
+
+        <li class="active"><a href="/">Home</a></li>
+        <a href="{% url 'cartDetails' %}"><i class="fa fa-shopping-cart">{{itc}}&nbsp;&nbsp;&nbsp;</i></a>
+
+
+        <li class="active"><a href="{% url 'login' %}">Login</a></li>
+        <li class="active"><a href="/">Logout</a></li>
+        <li class="active"><a href="{% url 'register' %}">Register</a></li>
+<!--    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter-->
+<!--    <span class="caret"></span></button>-->
+
+<!--    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
+<!--      <li role="presentation"><a role="menuitem" tabindex="-1" style="color:red;font-weight:bold" href={{i.get_url}}>{{i.name}}</a></li>-->
+
+<!--       </ul>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--###################################################################################################################-->
+      </nav>
+    </header>
+  </div>
+</div>
+{% block content %}
+{% endblock %}
+</body>

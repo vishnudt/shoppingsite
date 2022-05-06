@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body bgcolor="Lightskyblue">
+<center style="font-weight:bold;margin-top:20px;">LOGIN</center>
+<br>
+<br>
+<form action="login" method="post">
+    {% csrf_token %}
+
+
+<label style="margin-left:100px;"> E-mail</label>
+<input type="text" name="email" size="40" style="margin-left:100px;"/> <br>
+<label style="margin-left:100px;">Password</label>
+<input type="text" name="password" size="40" style="margin-left:100px;"/><br><br>
+
+    <input type="submit" value="Login" style="margin-left:120px;">
+</form>
+</body>
+{% endblock %}

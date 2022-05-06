@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="{% static 'cr/style.css'%}" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow" />
+
+
+  </head>
+  <body>
+
+      <!-- Title -->
+      <div class="title">
+        Shopping Bag
+      </div>
+
+      <!-- Product #1 -->
+      {% for i in ci %}
+      <div class="item">
+        <div class="buttons">
+          <a class="delete-btn" href="{% url 'remove' i.prodt.id %}"></a>
+          <span class="like-btn"></span>
+        </div>
+
+        <div class="image">
+         <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="{{i.get_url}}" style="height:110px;width:90px;"/></a>
+        </div>
+
+        <div class="description">
+          <a href="{{i.prodt.get_url}}"><span style="font-weight:bold;color:#2771c7;">{{i.prodt.name|truncatechars:15}}</span></a>
+          <span>PRICE: {{i.prodt.price}}</span>
+          <span>QTY: {{i.quantity}}</span>
+        </div>
+
+        <div class="quantity">
+          <button><a href="{% url 'addcart' i.prodt.id %}" style="font-weight:90px;color:red;font-size:15px;">+</a></button>  <p style="margin:0;padding-left: 7px;font-weight:bold;">{{i.quantity}}</p>  <button><a href="{% url 'cart_decrement' i.prodt.id %}" style="font-weight:90px;color:red;font-size:16px;"> -</a></button>
+
+
+        </div>
+
+        <div class="total-price">${{i.total}}</div>
+      </div>
+
+
+      {% endfor %}
+        <div class="d-flex justify-content-between mb-5" style="padding-left:534px;">
+
+            <h5 class="text-uppercase">Total Items</h5>
+                    <h5>{{itc}}</h5>
+
+
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5>$ {{t}}</h5>
+                  </div>
+<
+
+
+
+
+
+      {% endblock %}
+
+
+
+    <script type="text/javascript">
+      $('.minus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+
+    		if (value > 1) {
+    			value = value - 1;
+    		} else {
+    			value = 0;
+    		}
+
+        $input.val(value);
+
+    	});
+
+    	$('.plus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+
+    		if (value < 100) {
+      		value = value + 1;
+    		} else {
+    			value =100;
+    		}
+
+    		$input.val(value);
+    	});
+
+      $('.like-btn').on('click', function() {
+        $(this).toggleClass('is-active');
+      });
+    </script>
+  </body>
+</html>

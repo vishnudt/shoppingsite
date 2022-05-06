@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Sislaf</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css'%}" rel="stylesheet" type="text/css" media="all">
+<!--  #################################dropdown#####################################################-->
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+<!--  ###################################################################################################-->
+  <style>
+    .abcd{
+    height:100%
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+
+#topbar #searchform {
+    color: #fb4545;
+    padding-right: 13px;
+    }
+  </style>
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+<div class="abcd" style="background-image:url({% static 'hm/images/demo/backgrounds/bk.jpg'%});">
+<!--##############################################################################################################-->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+    <div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+
+
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Filter
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="/">All products</a></li>
+      {% for i in ct %}
+      <li class="disabled"><a href={{i.get_url}}>{{i.name}}</a></li>
+      {% endfor %}
+    </ul>
+
+
+
+
+    <div class="fl_right">
+         <ul class="nospace">
+
+           <li id="searchform">
+             <div>
+               <form action="{% url 'search' %}" method="GET">
+                 <fieldset>
+                   <legend>Quick search</legend>
+                   <input type="text" placeholder="enter the search term&hellip;" name="q">
+                   <button type="submit"><i class="fas fa-search"></i> </button>
+                 </fieldset>
+               </form>
+             </div>
+           </li>
+         </ul>
+<!--#################################################################################################################################################-->
+  </div>
+</div>
+</div>
+
+
+
+
+
+  <div id="pageintro" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <article>
+      <h3 class="heading">Quality products</h3>
+      <p>Please select your favorite and keep shopping</p>
+
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+  <!-- ################################################################################################ -->
+</div>
+
+<!-- ############################################################################################################################################### -->
+<!--    <div class="category">-->
+<div class="category">
+  {% for i in ct %}
+      <b style="color:white">
+        <a href={{i.get_url}}>{{i.name}}</a>
+      </b>
+  {% endfor %}
+    </div>
+
+<!--######################################################################################################################################################    -->
+
+</div>
+
+
+    <div class="wrapper row3">
+  <main class="hoc container clear">
+
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+
+
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+
+        {% for i in pg.object_list %}
+        <li class="one_third">
+          <figure><a class="imgover" href={{i.get_url}}><img src={{i.img.url}} alt="" style="height:300px"></a>
+            <figcaption>
+              <a href="{{i.get_url}}"><h6 class="heading"style="color:brown;">{{i.name}}</h6></a>
+              <p>{{i.desc|truncatewords:12}}</p>
+
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ul>
+      <center>
+        {% for p in pg.paginator.page_range %}
+
+        <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %} active {% endif %}">{{p}}</a>
+
+        {% endfor %}
+
+      </center>
+    </section>
+  </main>
+    </div>
+
+
+
+
+
+{% endblock %}
+</body>
+
+
+
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+
+
+
+
+
+
+
+
+</html>
