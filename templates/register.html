@@ -1,30 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<body bgcolor="Lightskyblue">
-<center style="font-weight:bold;margin-top:20px;">REGISTER</center>
-<br>
-<br>
-<form method="post" enctype="multipart/form-data">
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Registration</title>
+</head>
+<body bgcolor="cyan">
+<form action="register" method="post">
     {% csrf_token %}
+    <input type="text" name="username" placeholder="username"><br>
 
-<label style="margin-left:100px;"> Firstname</label>
-<input type="text" name="name" size="40" style="margin-left:100px;"/> <br>
-<label style="margin-left:100px;"> Username</label>
-<input type="text" name="email" size="40" style="margin-left:100px;"/> <br>
+    <input type="text" name="first_name" placeholder="first_name"><br>
 
+    <input type="text" name="last_name" placeholder="last_name"><br>
 
+    <input type="email" name="email" placeholder="email"><br>
 
+    <input type="password" name="password1" placeholder="password"><br>
 
+    <input type="password" name="password2" placeholder="confirm password"><br>
 
-<label style="margin-left:100px;">Password</label>
-<input type="text" name="password" size="40" style="margin-left:100px;"/> <br>
-<label style="margin-left:100px;"> confirm password</label>
-<input type="text" name="password2" size="40" style="margin-left:100px;"/> <br>
-
-<input type="submit" value="submit" style="margin-left:120px;">
-
+    <input type="submit" value="registration">
 
 </form>
+<div>
+    {% for message in messages %}
+    <h2>{{message}}</h2>
+    {% endfor %}
+
+</div>
 </body>
+</html>
 {% endblock %}
